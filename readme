@@ -3,12 +3,12 @@
 3 º Passo: Na aba 'File', escolha o arquivo do projeto;
 4 º Passo: Clique em [Import];
 5 º Passo: Clique nos [...] >> Edit >> aba 'Variables', veja as variáveis globais a nível de coleção;
-6 º Passo: Clique em [Cancele];
+6 º Passo: Clique em [Cancelar];
 7 º Passo: Clique agora no ícone [|->] (ícone acima do ícone de [...]);
-8 º Passp: Clique em [Run];
+8 º Passo: Clique em [Run];
 Será aberto o Runner do Postman com os 3 requests criados;
 9 º Passo: No lado esquerdo da tela, clique ao final da tela no botão [Run omdbapi-test];
 Os testes criado para cada request será executado.
-
-Obs.: Para visualizar os testes, abra o request >> clique em [SEND] >> Na area do response obtido, 
+ 
+Obs.: Para visualizar os testes, abra o request >> clique em [SEND] >> Na área do response obtido, 
 troque de 'Body' para 'Test Results'. Ao trocar para test results será apresentados os testes para o request.
