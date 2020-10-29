@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "7c14d0e1-5066-4825-b3e7-2f92f2831e52",
+		"name": "omdbapi-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Busca ano, titulo e idioma do filme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb8781e7-dca1-49d2-8d78-45ca8b505170",
+						"exec": [
+							"pm.test(\"Valida se o Status code é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Valida Ano, Titulo e Idioma do Filme\", function () {",
+							"const responseJson = pm.response.json();",
+							"   pm.expect(responseJson.Title).to.eql('The Social Network');",
+							"    pm.expect(responseJson.Year).to.eql('2010');",
+							"    pm.expect(responseJson.Language).to.eql('English, French');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.omdbapi.com/?i={{id_filme}}&apikey={{apikey}}",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "{{id_filme}}"
+						},
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca ano e titulo do filme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "96daf524-f06e-4ae3-87d6-e8689046c87d",
+						"exec": [
+							"pm.test(\"Valida se o Status code é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Valida Ano, Titulo e Idioma do Filme\", function () {",
+							"const responseJson = pm.response.json();",
+							"   pm.expect(responseJson.Title).to.eql('The Social Network');",
+							"    pm.expect(responseJson.Year).to.eql('2010');",
+							"    pm.expect(responseJson.Language).to.eql('English, French');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.omdbapi.com/?apikey={{apikey}}&y={{ano}}&t=The Social Network",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						},
+						{
+							"key": "y",
+							"value": "{{ano}}"
+						},
+						{
+							"key": "t",
+							"value": "The Social Network"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca filme inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1b53107-00a2-4427-ab9f-248baaf3dd3c",
+						"exec": [
+							"pm.test(\"Valida se o Status code é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Valida filme inexistente\", function () {",
+							"const responseJson = pm.response.json();",
+							"   pm.expect(responseJson.Response).to.eql('False');",
+							"   pm.expect(responseJson.Error).to.eql('Incorrect IMDb ID.');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.omdbapi.com/?apikey={{apikey}}&y={{ano}}&t=The Social Network&i={{id_filme_inexistente}}",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						},
+						{
+							"key": "y",
+							"value": "{{ano}}"
+						},
+						{
+							"key": "t",
+							"value": "The Social Network"
+						},
+						{
+							"key": "i",
+							"value": "{{id_filme_inexistente}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dd8f9d60-06eb-4a24-967a-85c6cb2cbaf3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2f741f03-5de4-437b-8dd8-2f11d768980b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1ad97b26-51b0-47fb-802b-8eb17d995764",
+			"key": "apikey",
+			"value": "52ec71bf"
+		},
+		{
+			"id": "ce13a394-b85b-4351-8ed7-5ec7d33b578e",
+			"key": "id_filme",
+			"value": "tt1285016"
+		},
+		{
+			"id": "57a0df1f-6df6-49d9-9992-d86d731a5008",
+			"key": "id_filme_inexistente",
+			"value": "123456"
+		},
+		{
+			"id": "f3ce8e29-e6d2-4e07-a525-094e25368d85",
+			"key": "ano",
+			"value": "2010"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
